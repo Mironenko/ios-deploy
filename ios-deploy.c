@@ -136,15 +136,15 @@ def autoexit_command(debugger, command, result, internal_dict):\n\
             debugger.HandleCommand('bt')\n\
             os._exit({exitcode_app_crash})\n\
 \n\
-        stdout = process.GetSTDOUT(1024)\n\
+        stdout = process.GetSTDOUT(1024).replace('(lldb) ','')\n\
         while stdout:\n\
             sys.stdout.write(stdout)\n\
-            stdout = process.GetSTDOUT(1024)\n\
+            stdout = process.GetSTDOUT(1024).replace('(lldb) ','')\n\
 \n\
-        stderr = process.GetSTDERR(1024)\n\
+        stderr = process.GetSTDERR(1024).replace('(lldb) ','')\n\
         while stderr:\n\
             sys.stdout.write(stderr)\n\
-            stderr = process.GetSTDERR(1024)\n\
+            stderr = process.GetSTDERR(1024).replace('(lldb) ','')\n\
 ")
 
 typedef struct am_device * AMDeviceRef;
